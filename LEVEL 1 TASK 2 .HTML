@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Priyanshi Shah Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #1f263b; /* dark navy */
+  color: #e5e7eb; /* light text */
+}
+
+/* Container */
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+  color: #f59e0b; /* orange */
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+  cursor: pointer;
+  color: #cbd5e1;
+  transition: 0.3s;
+}
+
+nav ul li:hover {
+  color: #f59e0b;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero h1 {
+  font-size: 52px;
+  color: #f3f4f6;
+}
+
+.hero h3 {
+  color: #f59e0b;
+  margin: 10px 0;
+}
+
+.hero p {
+  margin-bottom: 20px;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+/* Button */
+.btn {
+  padding: 12px 24px;
+  background: #f59e0b;
+  color: #1f263b;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #d97706;
+}
+
+/* Image */
+.hero-img img {
+  width: 300px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 70px 0;
+  text-align: center;
+}
+
+.stats h2 {
+  color: #f59e0b;
+  font-size: 30px;
+}
+
+.stats p {
+  color: #cbd5e1;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  background: #2a314d;
+  padding: 25px;
+  border-radius: 12px;
+  flex: 1;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Highlight card */
+.card.active {
+  background: #f59e0b;
+  color: #1f263b;
+}
+
+/* Projects */
+.projects {
+  margin-top: 60px;
+}
+
+.projects h2 {
+  margin-bottom: 20px;
+}
+
+.project {
+  margin-bottom: 15px;
+  background: #2a314d;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Contact */
+.contact {
+  margin-top: 60px;
+  padding-bottom: 50px;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">PS.</div>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Projects</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Priyanshi Shah</h1>
+      <h3>Computer Science Student</h3>
+      <p>
+        I am a BTech student in Computer Science and Design with strong academic 
+        background and hands-on experience in software development. Passionate 
+        about AI, IoT, and building innovative tech solutions.
+      </p>
+
+      <a href="#" class="btn">View Projects →</a>
+    </div>
+
+    <div class="hero-img">
+      <img src="C:\Users\kirte\Downloads\WhatsApp Image 2026-03-22 at 11.46.58.jpeg" alt="profile">
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div>
+      <h2>9.43</h2>
+      <p>CGPA</p>
+    </div>
+    <div>
+      <h2>3+</h2>
+      <p>Projects</p>
+    </div>
+    <div>
+      <h2>5+</h2>
+      <p>Skills</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="cards">
+    <div class="card active">
+      <h3>Web Developer</h3>
+      <p>HTML, CSS, Full-stack basics</p>
+    </div>
+
+    <div class="card">
+      <h3>IoT Developer</h3>
+      <p>Smart systems & automation</p>
+    </div>
+
+    <div class="card">
+      <h3>Programmer</h3>
+      <p>C/C++, Cybersecurity basics</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <h3>Job Portal</h3>
+      <p>Developed a full-stack job portal with user authentication and job application system.</p>
+    </div>
+
+    <div class="project">
+      <h3>AI Consultancy Platform</h3>
+      <p>Web-based AI system for personalized recommendations and smart decision making.</p>
+    </div>
+
+    <div class="project">
+      <h3>Smart Library System</h3>
+      <p>IoT-based system for automated library management and real-time tracking.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <h2>Contact</h2>
+    <p>Email: priyanshi3215@gmail.com</p>
+    <p>LinkedIn:https://www.linkedin.com/in/priyanshi-shah-254615319</p>
+  </section>
+
+</div>
+
+</body>
+</html>
