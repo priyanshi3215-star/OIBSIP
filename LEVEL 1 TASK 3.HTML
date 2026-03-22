@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ThermoX Converter</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Theme */
+:root {
+  --bg-main: #1f263b;
+  --card-bg: #2a314d;
+  --accent: #f59e0b;
+  --accent-dark: #d97706;
+  --text-main: #e5e7eb;
+  --text-dim: #9ca3af;
+  --border: #3b4261;
+  --error: #ef4444;
+}
+
+/* Layout */
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Main Box */
+.wrapper {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  width: 420px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  border-top: 4px solid var(--accent);
+}
+
+/* Heading */
+.title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.title span {
+  color: var(--accent);
+}
+
+/* Unit Buttons */
+.unit-group {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.unit-btn {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.unit-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Input */
+.input-box input {
+  width: 100%;
+  padding: 12px;
+  background: #1a1a20;
+  border: 1px solid var(--border);
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: var(--error);
+  font-size: 12px;
+}
+
+/* Button */
+.convert {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  color: black;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.convert:hover {
+  background: var(--accent-dark);
+}
+
+/* Result */
+.output {
+  margin-top: 20px;
+}
+
+.result-box {
+  background: #1a1a20;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <h1 class="title">Temprature<span>X</span></h1>
+
+  <div class="unit-group">
+    <button class="unit-btn active" onclick="setUnit('C', this)">°C</button>
+    <button class="unit-btn" onclick="setUnit('F', this)">°F</button>
+    <button class="unit-btn" onclick="setUnit('K', this)">K</button>
+  </div>
+
+  <div class="input-box">
+    <input type="number" id="inputTemp" placeholder="Enter value">
+    <div class="error" id="errMsg"></div>
+  </div>
+
+  <button class="convert" onclick="convertTemp()">Convert</button>
+
+  <div class="output" id="output"></div>
+
+</div>
+
+<script>
+let currentUnit = "C";
+
+function setUnit(unit, btn) {
+  currentUnit = unit;
+  document.querySelectorAll(".unit-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("output").innerHTML = "";
+}
+
+function toCelsius(val, from) {
+  if (from === "C") return val;
+  if (from === "F") return (val - 32) * 5/9;
+  if (from === "K") return val - 273.15;
+}
+
+function convertFromC(c, to) {
+  if (to === "C") return c;
+  if (to === "F") return c * 9/5 + 32;
+  if (to === "K") return c + 273.15;
+}
+
+function convertTemp() {
+  const value = document.getElementById("inputTemp").value;
+  const output = document.getElementById("output");
+  const err = document.getElementById("errMsg");
+
+  if (value === "") {
+    err.textContent = "Enter a value!";
+    return;
+  }
+
+  const num = parseFloat(value);
+  if (isNaN(num)) {
+    err.textContent = "Invalid input!";
+    return;
+  }
+
+  err.textContent = "";
+  output.innerHTML = "";
+
+  const c = toCelsius(num, currentUnit);
+
+  ["C", "F", "K"].forEach(unit => {
+    if (unit !== currentUnit) {
+      const result = convertFromC(c, unit);
+      output.innerHTML += `
+        <div class="result-box">
+          ${result.toFixed(2)} °${unit}
+        </div>
+      `;
+    }
+  });
+}
+</script>
+
+</body>
+</html>
